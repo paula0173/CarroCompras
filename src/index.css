@@ -1,0 +1,26 @@
+.styleBanner {
+    background-image: url("/src/assets/img/wallpaper.jpg");
+    background-repeat: no-repeat;
+    height: 200px;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+ .styleHr{
+    width:50%; 
+    margin-left:25%  
+ }
+
+ .styleList{
+    list-style:none;
+ }
+
+ .textPizza{
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 11px;
+ }
+
+ img
+ { max-width: 100%;
+}
