@@ -1,13 +1,14 @@
 
- 
 import Navbar from 'react-bootstrap/Navbar';
-
-
+import { useNavigate } from 'react-router-dom';
+ 
 const NavBar = () => {
+    
+    const navigate = useNavigate();
 
     return (
         <Navbar className="bg-info justify-content-around ">
-            <Navbar.Brand className ="text-white " href="/">
+            <Navbar.Brand className ="text-white " onClick={() => navigate(`/`)}>
                 <img
                     src="../src/assets/img/pizza.svg"
                     width="30"
@@ -18,7 +19,7 @@ const NavBar = () => {
                 <b>Pizzeria Mamma Mia! </b>
             </Navbar.Brand>
 
-            <Navbar.Brand className ="text-white"  href="/ShoppingCart">
+            <Navbar.Brand className ="text-white" onClick={() => navigate(`/ShoppingCart`)}>
                 <img
                     src="../src/assets/img/shoppingcart.svg"
                     width="30"

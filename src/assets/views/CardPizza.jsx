@@ -2,23 +2,21 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 import { useNavigate } from "react-router-dom";
-
+import { PizzasContext } from '../context/PizzasContext';
+import { useContext } from "react";
 
 const CardPizza = ({ pizza }) => {
 
-    
     const navigate = useNavigate();
+    const { addPizzaShopping } = useContext(PizzasContext);
 
     const GotoPizza = (id) => {
         navigate(`/Pizza/${id}`)
     };
 
-    const GotoCarrito = (id) => {
-         navigate(`/ShoppingCart/${id}`)
-    };
-
     return (
         <div >
+              
             <Card style={{ width: '14rem' }}>
                 <Card.Img variant="top" src={pizza.img} />
                 <Card.Body>
@@ -48,7 +46,7 @@ const CardPizza = ({ pizza }) => {
                             height="15"
                         />
                     </Button>
-                    <Button className="p-1" variant="danger" size="sm" onClick={() => GotoCarrito(pizza.id)}  >Añadir
+                    <Button className="p-1" variant="danger" size="sm" onClick={() => addPizzaShopping(pizza)}  >Añadir
                         <img
                             className="m-1" src="../src/assets/img/shoppingcart.svg"
                             width="15"

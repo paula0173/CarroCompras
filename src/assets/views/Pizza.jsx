@@ -6,8 +6,9 @@ import Card from 'react-bootstrap/Card';
 
 import Button from 'react-bootstrap/Button';
 import { useContext, useEffect } from "react";
-import { PizzasContext } from '../context/Pizzascontext';
+ 
 import { useParams, useNavigate } from "react-router-dom";
+import { PizzasContext } from '../context/PizzasContext';
  
 const Pizza = () => {
 
@@ -15,19 +16,19 @@ const Pizza = () => {
     const navigate = useNavigate();
 
     const { addPizzaShopping, listPizzas } = useContext(PizzasContext);
-    const indexPicture = listPizzas.findIndex(item => item.id === id)
-    const detailPizza = listPizzas.at(indexPicture);        
+    const indexPizza = listPizzas.findIndex(item => item.id === id)
+    const detailPizza = listPizzas.at(indexPizza);        
     
     useEffect(() => {
-        if (indexPicture < 0)   {
+        if (indexPizza < 0)   {
             navigate(`/NotFound`)}
          // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
  
  
     return (
-        <div >{indexPicture > 0 && 
-
+        <div >
+        {indexPizza >= 0 && 
             <Container >
                 <Row className="p-4 ">
                     <Col className="col-3 m-0 p-0" >
