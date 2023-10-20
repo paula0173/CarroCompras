@@ -58,7 +58,7 @@ const Pizza = () => {
                                     ))}
                                 </ul>
                                 <div className="d-flex justify-content-between">
-                                    <h4> Precio:  ${detailPizza.price} </h4>
+                                    <h4> Precio:  ${(detailPizza.price).toLocaleString()} </h4>
                                     <Button className="p-1" variant="danger" size="sm" onClick={() => addPizzaShopping(detailPizza)}>Añadir
                                         <img
                                             className="m-1" src="../src/assets/img/shoppingcart.svg"

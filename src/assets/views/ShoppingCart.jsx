@@ -1,67 +1,63 @@
 import { Container } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table';
 
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { PizzasContext } from '../context/PizzasContext';
+import ToastUtility from '../components/ToastUtility';
 
 const ShoppingCart = () => {
+  const { listShoppingCart, addPizzaShopping, removePizzaShopping, calculateAmount } = useContext(PizzasContext);
 
-  const { listShoppingCart, addPizzaShopping, setlistShoppingCart, removePizzaShopping } = useContext(PizzasContext);
+  const [stateInitial, setstateInitial] = useState(false);
 
   const addPizza = (pizza) => {
-    addPizzaShopping(pizza) 
-    
+    addPizzaShopping(pizza)
   }
 
   const removePizza = (pizza) => {
-    removePizzaShopping(pizza) 
+    removePizzaShopping(pizza)
   }
 
   return (
     <div>
-
       <Container className='p-4'>
-        <Table striped hover>
-          <thead>
-            <tr>
-              <th>Detalles del pedido: </th>
-            </tr>
-          </thead>
+        <p> <b> Detalles del pedido: </b> </p>
 
-          <tbody>
-            {listShoppingCart.length > 0 ? listShoppingCart.map((pizza) => (
-              <tr key={pizza.id}>
-                <td >
-                  <img src={`${pizza.img}`}
-                    width="10%"
-                    height="10%"
-                    alt="pizza"
-                  />
-                </td>
+        {listShoppingCart.length > 0 ? listShoppingCart.map((pizza) => (
+          <Row key={pizza.id} className='p-3'>
+            <Col className="col-1">
+              <img src={`${pizza.img}`}
+                width="90%"
+                height="90%"
+                alt="pizza"
+              /> </Col>
+            <Col ><span className="col-7 text-start text-capitalize">  {pizza.name}  </span>
+            </Col>
+            <Col className="col-2 text-success text-center" ><b> $ {(pizza.price * pizza.cantidad).toLocaleString()} </b>
+            </Col>
+            <Col className="col-1" md="auto" >
+              <Button  variant="danger" size="sm" onClick={() => removePizza(pizza)}>-
+              </Button>
+            </Col>
+            <Col className="col-1 fs-6" md="auto" > <b> {pizza.cantidad} </b>
+            </Col>
+            <Col className="col-1" md="auto" >  <Button className="" variant="primary" size="sm" onClick={() => addPizza(pizza)}> +
+            </Button>
+            </Col>
+            <hr className='mb-1' />
+          </Row>
+        )) : null}
 
-                <td className='justify'> {pizza.name}</td>
-                <td> {pizza.price * pizza.cantidad}</td>
-                <td>
-                  <Button className="" variant="danger" size="sm" onClick={() => removePizza(pizza)}>-
-                  </Button></td>
-                <td> {pizza.cantidad}</td>
-
-                <td>
-                  <Button className=" " variant="primary" size="sm" onClick={() => addPizza(pizza) }> +
-                  </Button>
-                </td>
-              </tr>
-            )) : null}
-          </tbody>
-        </Table>
 
         {listShoppingCart.length > 0 &&
-          <div> <h4><b> Total: $ </b> </h4>
-            <Button className="p-1" variant="success" size="sm">Ir a Pagar
+          <div> <h4><b> Total: $ {calculateAmount()} </b> </h4>
+            <Button className="p-1" variant="success" onClick={() => setstateInitial(true)} >Ir a Pagar
             </Button></div>}
-
       </Container >
+
+      {stateInitial && <ToastUtility stateInitial={stateInitial}/> }
     </div >
   );
 };

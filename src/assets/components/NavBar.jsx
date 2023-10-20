@@ -1,10 +1,14 @@
 
 import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from 'react-router-dom';
- 
+import { useContext } from "react";
+import { PizzasContext } from '../context/PizzasContext';
+
 const NavBar = () => {
     
     const navigate = useNavigate();
+
+    const { calculateAmount } = useContext(PizzasContext);
 
     return (
         <Navbar className="bg-info justify-content-around ">
@@ -26,7 +30,7 @@ const NavBar = () => {
                     height="30"
                     className="d-inline-block align-top"
                 />{' '}
-                $ 0
+                <b> $ {calculateAmount()} </b>
             </Navbar.Brand>
         </Navbar>
     );

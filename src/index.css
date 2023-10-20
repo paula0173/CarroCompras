@@ -1,7 +1,7 @@
 .styleBanner {
     background-image: url("/src/assets/img/wallpaper.jpg");
     background-repeat: no-repeat;
-    height: 200px;
+    width: 100%;
     color: white;
     text-align: center;
     padding: 50px;

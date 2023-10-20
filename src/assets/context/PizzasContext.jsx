@@ -1,42 +1,62 @@
 import { createContext, useState, useEffect } from "react";
-import basePizzas from '/src/pizzas.json';
+import axios from "axios";
 
 export const PizzasContext = createContext();
 
 const PizzasProvider = ({ children }) => {
 
-    const [listPizzas, setlistPizzas] = useState([]);
-    const [listShoppingCart, setlistShoppingCart] = useState([]);
+    const [listPizzas, setListPizzas] = useState([]);
+    const [listShoppingCart, setListShoppingCart] = useState([]);
+
+    const searchPizzas = () => {
+        axios.get('pizzas.json')
+            .then((response) => {
+                setListPizzas(response.data)
+            })
+            .catch((err) => {
+                console.log("Error al obtener datos de la API:", err);
+            });
+    };
+
+
 
     const addPizzaShopping = (pizza) => {
         const indexPiza = listShoppingCart.findIndex(item => item.id === pizza.id)
         if (indexPiza < 0) {
-            setlistShoppingCart([...listShoppingCart, { id: pizza.id, name: pizza.name, img: pizza.img, price: pizza.price, cantidad: 1 }])
+            setListShoppingCart([...listShoppingCart, { id: pizza.id, name: pizza.name, img: pizza.img, price: pizza.price, cantidad: 1 }])
         }
         else {
             listShoppingCart[indexPiza].cantidad = listShoppingCart[indexPiza].cantidad + 1
-            setlistShoppingCart([...listShoppingCart])
+            setListShoppingCart([...listShoppingCart])
         }
+
     }
 
     const removePizzaShopping = (pizza) => {
         const indexPiza = listShoppingCart.findIndex(item => item.id === pizza.id)
         if (listShoppingCart[indexPiza].cantidad === 1) {
-            setlistShoppingCart(listShoppingCart.filter(item => item.id !== pizza.id))
+            setListShoppingCart(listShoppingCart.filter(item => item.id !== pizza.id))
         }
         else {
             listShoppingCart[indexPiza].cantidad = listShoppingCart[indexPiza].cantidad - 1
-            setlistShoppingCart([...listShoppingCart])
+            setListShoppingCart([...listShoppingCart])
         }
+
     }
-  
+
+    const calculateAmount = () => {
+        const total = (listShoppingCart.reduce((accumulator, pizza) => accumulator + pizza.price * pizza.cantidad, 0))
+        return total.toLocaleString()
+    }
+
+
     useEffect(() => {
-        setlistPizzas(basePizzas);
+        searchPizzas();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <PizzasContext.Provider value={{ listPizzas, setlistPizzas, listShoppingCart, setlistShoppingCart, addPizzaShopping, removePizzaShopping }}>
+        <PizzasContext.Provider value={{ listPizzas, setListPizzas, listShoppingCart, setListShoppingCart, addPizzaShopping, removePizzaShopping, calculateAmount }}>
             {children}
         </PizzasContext.Provider>
     );

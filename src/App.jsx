@@ -4,14 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Route, Routes } from "react-router-dom";
 
-
-import NavBar from './assets/components/Navbar';
 import Home from './assets/views/Home'
 
 import ShoppingCart from './assets/views/ShoppingCart'
 import NotFound from './assets/views/NotFound';
 import Pizza from './assets/views/Pizza';
 import PizzasProvider from './assets/context/PizzasContext'
+import NavBar from './assets/components/NavBar';
 
 function App() {
 

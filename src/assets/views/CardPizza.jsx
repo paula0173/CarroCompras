@@ -38,7 +38,7 @@ const CardPizza = ({ pizza }) => {
                 </Card.Body>
 
                 <Card.Footer className="text-center" >
-                    <h3 className="p-3"> $ {pizza.price} </h3>
+                    <h3 className="p-3"> $ {(pizza.price).toLocaleString()} </h3>
 
                     <Button className="p-1 m-2 text-white" variant="info" size="sm" onClick={() => GotoPizza(pizza.id)} >Ver Mas
                         <img className="m-1" src="../src/assets/img/eyes.png"

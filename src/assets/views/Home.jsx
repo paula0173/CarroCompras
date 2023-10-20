@@ -19,7 +19,7 @@ const Home = () => {
         <hr className="styleHr" />
       </div>
        
-      <Container >
+      <Container className="justify-content-center">
         <Row className="p-3 ">
             {listPizzas.length > 0 ? listPizzas.map((pizza) => (
 
