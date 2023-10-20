@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
+import ToastContainer from 'react-bootstrap/ToastContainer';
 
 const ToastUtility = ({ initialState }) => {
 
@@ -10,21 +11,20 @@ const ToastUtility = ({ initialState }) => {
   return (
     <Row>
       <Col xs={6}>
-        <Toast onClose={() => setShow(false)} show={show} delay={5000} autohide className="d-inline-block m-1"
-          bg="primary">
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-2"
-              alt=""
-            />
-            <strong className="me-auto">Aviso</strong>
-            <small>Pagando</small>
-          </Toast.Header>
-          <Toast.Body className="Primary"></Toast.Body>
-        </Toast>
+        <ToastContainer className="p-3" position={'middle-center'} style={{ zIndex: 1 }}  >
+          <Toast onClose={() => setShow(false)} show={show} delay={1000} autohide className="d-inline-block m-1"
+            bg="success" >
+            <Toast.Header>
+              <strong className="me-auto">Información</strong>
+            </Toast.Header>
+            <Toast.Body className='text-white'>
+              Pizas Pagadas!!
+            </Toast.Body>
+
+          </Toast>
+        </ToastContainer>
       </Col>
-  
+
     </Row>
   );
 }

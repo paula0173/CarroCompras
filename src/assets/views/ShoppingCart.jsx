@@ -23,7 +23,7 @@ const ShoppingCart = () => {
   return (
     <div>
       <Container className='p-4'>
-        <p> <b> Detalles del pedido: </b> </p>
+        <h4> <b> Detalles del pedido: </b> </h4>
 
         {listShoppingCart.length > 0 ? listShoppingCart.map((pizza) => (
           <Row key={pizza.id} className='p-3'>
@@ -33,7 +33,7 @@ const ShoppingCart = () => {
                 height="90%"
                 alt="pizza"
               /> </Col>
-            <Col ><span className="col-7 text-start text-capitalize">  {pizza.name}  </span>
+            <Col ><span className="col-7 text-capitalize">  {pizza.name}  </span>
             </Col>
             <Col className="col-2 text-success text-center" ><b> $ {(pizza.price * pizza.cantidad).toLocaleString()} </b>
             </Col>
@@ -48,11 +48,11 @@ const ShoppingCart = () => {
             </Col>
             <hr className='mb-1' />
           </Row>
-        )) : null}
+        )) : <h5 className="text-center"> No hay pedidos</h5> }
 
 
         {listShoppingCart.length > 0 &&
-          <div> <h4><b> Total: $ {calculateAmount()} </b> </h4>
+          <div> <h3><b> Total: $ {calculateAmount()} </b> </h3>
             <Button className="p-1" variant="success" onClick={() => setstateInitial(true)} >Ir a Pagar
             </Button></div>}
       </Container >

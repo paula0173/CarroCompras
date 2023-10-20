@@ -31,7 +31,7 @@ const Pizza = () => {
         {indexPizza >= 0 && 
             <Container >
                 <Row className="p-4 ">
-                    <Col className="col-3 m-0 p-0" >
+                    <Col className="col-4 m-0 p-0" >
                     <img src={ `${detailPizza.img}`}
                                     width="100%"
                                     height="100%"   
@@ -40,11 +40,11 @@ const Pizza = () => {
                     </Col>
 
                     <Col className="m-0 p-0">
-                        <Card className="textPizza" >
+                        <Card >
                             <Card.Body>
-                                <Card.Title className="text-capitalize  ">{detailPizza.name}</Card.Title>
+                                <Card.Title className="text-capitalize"><h2>{detailPizza.name}</h2></Card.Title>
                                 <hr />
-                                <p > {detailPizza.desc}</p>
+                                <p className='textPizza'> {detailPizza.desc} </p>
                                 <p><b> Ingredientes </b> </p>
                                 <ul className="styleList">
                                     {detailPizza.ingredients.map((ingredient, index) => (
@@ -58,7 +58,7 @@ const Pizza = () => {
                                     ))}
                                 </ul>
                                 <div className="d-flex justify-content-between">
-                                    <h4> Precio:  ${(detailPizza.price).toLocaleString()} </h4>
+                                    <h3> Precio:  ${(detailPizza.price).toLocaleString()} </h3>
                                     <Button className="p-1" variant="danger" size="sm" onClick={() => addPizzaShopping(detailPizza)}>Añadir
                                         <img
                                             className="m-1" src="../src/assets/img/shoppingcart.svg"

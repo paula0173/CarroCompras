@@ -18,8 +18,6 @@ const PizzasProvider = ({ children }) => {
             });
     };
 
-
-
     const addPizzaShopping = (pizza) => {
         const indexPiza = listShoppingCart.findIndex(item => item.id === pizza.id)
         if (indexPiza < 0) {

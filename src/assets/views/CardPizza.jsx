@@ -20,7 +20,7 @@ const CardPizza = ({ pizza }) => {
             <Card style={{ width: '14rem' }}>
                 <Card.Img variant="top" src={pizza.img} />
                 <Card.Body>
-                    <Card.Title className="text-capitalize">{pizza.name}</Card.Title>
+                    <Card.Title className="text-capitalize"> <b>{pizza.name} </b>  </Card.Title>
                     <hr />
                     <p><b> Ingredientes </b> </p>
                     <ul className="styleList">

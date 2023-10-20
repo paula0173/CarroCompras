@@ -14,13 +14,14 @@
 
  .styleList{
     list-style:none;
+    font-size: 17px;
  }
 
  .textPizza{
    font-family:Verdana, Geneva, Tahoma, sans-serif;
-   font-size: 11px;
+   font-size: 18px;
  }
 
- img
- { max-width: 100%;
+.colorbg{
+   background-color: rgb(23, 162, 184);
 }
