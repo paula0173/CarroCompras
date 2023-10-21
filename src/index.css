@@ -1,27 +1,36 @@
 .styleBanner {
-    background-image: url("/src/assets/img/wallpaper.jpg");
-    background-repeat: no-repeat;
-    width: 100%;
-    color: white;
-    text-align: center;
-    padding: 50px;
+   background-image: url(/src/assets/img/wallpaper.jpg);
+   background-repeat: no-repeat;
+   width: 100%;
+   height: auto;
+   color: white;
+   text-align: center;
+   padding: 50px;
+   margin-top: 1px;
 }
 
  .styleHr{
     width:50%; 
-    margin-left:25%  
+    margin-left:25%;
+    margin-right: 25%;
  }
 
  .styleList{
     list-style:none;
-    font-size: 17px;
+    font-size: 12px;
  }
 
  .textPizza{
    font-family:Verdana, Geneva, Tahoma, sans-serif;
-   font-size: 18px;
+   font-size: 12px;
  }
 
 .colorbg{
    background-color: rgb(23, 162, 184);
 }
+
+.assignPointer {
+   cursor:pointer;
+}
+
+

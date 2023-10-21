@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import { createContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const PizzasContext = createContext();
 
@@ -14,7 +14,7 @@ const PizzasProvider = ({ children }) => {
                 setListPizzas(response.data)
             })
             .catch((err) => {
-                console.log("Error al obtener datos de la API:", err);
+                console.error("Error al obtener datos de la API:", err);
             });
     };
 
@@ -27,7 +27,6 @@ const PizzasProvider = ({ children }) => {
             listShoppingCart[indexPiza].cantidad = listShoppingCart[indexPiza].cantidad + 1
             setListShoppingCart([...listShoppingCart])
         }
-
     }
 
     const removePizzaShopping = (pizza) => {
@@ -39,7 +38,6 @@ const PizzasProvider = ({ children }) => {
             listShoppingCart[indexPiza].cantidad = listShoppingCart[indexPiza].cantidad - 1
             setListShoppingCart([...listShoppingCart])
         }
-
     }
 
     const calculateAmount = () => {
